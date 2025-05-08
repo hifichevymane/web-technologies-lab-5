@@ -1,0 +1,36 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block header %}
+  <h1>Products</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>price</th>
+      <th>product_qty</th>
+      <th>category</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.product_qty }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.created_at }}</td>
+        <td>{{ product.updated_at }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,7 +1,13 @@
-from django.shortcuts import HttpResponse
-from .models import Product
+from django.views.generic import ListView
+from .models import Product, Category
 
 # Create your views here.
-def index(request):
-    products = Product.objects.all()
-    return HttpResponse(products)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products/products.html'
+    context_object_name = 'products'
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'products/categories.html'
+    context_object_name = 'categories'
