@@ -1,0 +1,15 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Create Product{% endblock %}
+
+{% block header %}
+<h1>Create Product</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Create Product</button>
+</form>
+{% endblock %}
