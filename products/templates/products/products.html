@@ -1,11 +1,9 @@
 {% extends 'products/base.html' %}
 
 {% block title %}Products{% endblock %}
-
-{% block header %}
-  <h1>Products</h1>
+{%block header %}
+<h1>Products</h1>
 {% endblock %}
-
 {% block content %}
 <table>
   <thead>
@@ -20,17 +18,33 @@
     </tr>
   </thead>
   <tbody>
-    {% for product in products %}
-      <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.title }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.product_qty }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.created_at }}</td>
-        <td>{{ product.updated_at }}</td>
-      </tr>
+    {% for product in page_obj %}
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.title }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.product_qty }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.created_at }}</td>
+      <td>{{ product.updated_at }}</td>
+    </tr>
     {% endfor %}
   </tbody>
 </table>
+
+<div class="pagination">
+  {% if page_obj.has_previous %}
+  <a href="?page=1">&laquo; first</a>
+  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+  {% endif %}
+
+  <span class="current">
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+  </span>
+
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">next</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+  {% endif %}
+</div>
 {% endblock %}

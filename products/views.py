@@ -6,8 +6,11 @@ class ProductListView(ListView):
     model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
+    paginate_by = 5
+    ordering = 'id'
 
 class CategoryListView(ListView):
     model = Category
     template_name = 'products/categories.html'
     context_object_name = 'categories'
+    paginate_by = 4
