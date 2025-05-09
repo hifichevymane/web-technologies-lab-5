@@ -8,6 +8,11 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Категорія"
+        verbose_name_plural = "Категорії"
+        ordering = ['created_at']
+
 class Product(models.Model):
     title = models.CharField(max_length=250)
     price = models.FloatField()
@@ -18,3 +23,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товари"
+        ordering = ['updated_at']
