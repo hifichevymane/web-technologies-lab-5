@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Product, Category
 from .forms import ProductForm, CategoryForm
 from django.urls import reverse_lazy
@@ -35,11 +35,19 @@ class ProductUpdateView(UpdateView):
         return reverse_lazy('product-detail', kwargs={'pk': self.object.pk})
 
 
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'products/delete-product.html'
+    success_url = reverse_lazy('product-list')
+    context_object_name = 'product'
+
+
 class CategoryListView(ListView):
     model = Category
     template_name = 'products/categories.html'
     context_object_name = 'categories'
     paginate_by = 4
+    ordering = 'id'
 
 
 class CategoryDetailView(DetailView):
@@ -63,3 +71,10 @@ class CategoryUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('category-detail', kwargs={'pk': self.object.pk})
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'products/delete-category.html'
+    success_url = reverse_lazy('category-list')
+    context_object_name = 'category'
