@@ -11,17 +11,32 @@ class ProductListView(ListView):
     paginate_by = 5
     ordering = 'id'
 
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products/product-detail.html'
+    context_object_name = 'product'
+
+
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'products/new-product.html'
     success_url = reverse_lazy('product-list')
 
+
 class CategoryListView(ListView):
     model = Category
     template_name = 'products/categories.html'
     context_object_name = 'categories'
     paginate_by = 4
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'products/category-detail.html'
+    context_object_name = 'category'
+
 
 class CategoryCreateView(CreateView):
     model = Category

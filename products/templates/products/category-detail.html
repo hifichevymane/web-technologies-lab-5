@@ -1,0 +1,58 @@
+{% extends 'products/base.html' %}
+
+{% block title %}{{ category.title }} Category{% endblock %}
+
+{% block header %}
+<h1>{{ category.title }} Category</h1>
+{% endblock %}
+
+{% block content %}
+<div class="product-detail">
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ category.title }}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{ category.created_at }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Products in this category</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in category.product_set.all %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>
+                    <a href="{% url 'product-detail' product.pk %}">{{ product.title }}</a>
+                </td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.product_qty }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No products in this category</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'category-list' %}" class="btn btn-primary">Back to Categories</a>
+</div>
+{% endblock %}

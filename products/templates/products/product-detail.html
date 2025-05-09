@@ -1,0 +1,46 @@
+{% extends 'products/base.html' %}
+
+{% block title %}{{ product.title }} Details{% endblock %}
+
+{% block header %}
+<h1>{{ product.title }}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="product-detail">
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ product.title }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>${{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ product.product_qty }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ product.category }}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{ product.created_at }}</td>
+            </tr>
+            <tr>
+                <th>Updated At</th>
+                <td>{{ product.updated_at }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'product-list' %}" class="btn btn-primary">Back to Products</a>
+</div>
+{% endblock %}
