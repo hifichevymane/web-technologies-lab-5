@@ -1,0 +1,15 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Update {{ category.title }}{% endblock %}
+
+{% block header %}
+<h1>Update Category</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Update Category</button>
+</form>
+{% endblock %}
