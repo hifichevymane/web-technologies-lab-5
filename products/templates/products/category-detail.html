@@ -40,7 +40,7 @@
             <tr>
                 <td>{{ product.id }}</td>
                 <td>
-                    <a href="{% url 'product-detail' product.pk %}">{{ product.title }}</a>
+                    <a href="{% url 'product-detail' product.slug %}">{{ product.title }}</a>
                 </td>
                 <td>${{ product.price }}</td>
                 <td>{{ product.product_qty }}</td>
@@ -54,7 +54,7 @@
     </table>
 
     <a href="{% url 'category-list' %}" class="btn btn-primary">Back to Categories</a>
-    <a href="{% url 'category-update' category.pk %}" class="btn btn-primary">Edit Category</a>
-    <a href="{% url 'category-delete' category.pk %}" class="btn btn-danger">Delete Category</a>
+    <a href="{% url 'category-update' category.slug %}" class="btn btn-primary">Edit Category</a>
+    <a href="{% url 'category-delete' category.slug %}" class="btn btn-danger">Delete Category</a>
 </div>
 {% endblock %}

@@ -21,7 +21,7 @@
       <tr>
         <td>{{ category.id }}</td>
         <td>
-          <a href="{% url 'category-detail' category.pk %}">{{ category.title }}</a>
+          <a href="{% url 'category-detail' category.slug %}">{{ category.title }}</a>
         </td>
         <td>{{ category.created_at }}</td>
       </tr>
