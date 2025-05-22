@@ -1,6 +1,6 @@
 from django.urls import path, include
 from tastypie.api import Api
-from .views import CategoryResource, ProductResource
+from .models import CategoryResource, ProductResource
 
 category_resource = Api(api_name='v1')
 category_resource.register(CategoryResource())
